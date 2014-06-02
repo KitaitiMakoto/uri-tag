@@ -39,19 +39,36 @@ module URI
     end
 
     def authority=(value)
-      @authority = value
+      set_authority(value)
+      value
     end
 
     def date=(value)
-      @date = value
+      set_date(value)
+      value
     end
 
     def specific=(value)
-      @specific = value
+      set_specific(value)
+      value
     end
 
     def fragment=(value)
-      @fragment = value
+      set_fragment(value)
+    end
+
+    protected
+
+    def set_authority(authority)
+      @authority = authority
+    end
+
+    def set_date(date)
+      @date = date
+    end
+
+    def set_specific(specific)
+      @specific = specific
     end
   end
 
