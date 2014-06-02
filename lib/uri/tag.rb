@@ -34,6 +34,10 @@ module URI
       end
     end
 
+    def tagging_entity
+      authority + ',' + date
+    end
+
     def authority=(value)
       @authority = value
     end
