@@ -24,11 +24,27 @@ class TestTag < Test::Unit::TestCase
     assert_equal 'example.net,2014:specific?query', uri.opaque
   end
 
+  def test_build
+    tag = nil
+    assert_nothing_raised do
+      tag = URI::Tag.build(['example.org', '2014', 'uri-tag', 'test'])
+    end
+    assert_equal 'example.org', tag.authority
+    assert_equal '2014', tag.date
+    assert_equal 'uri-tag', tag.specific
+    assert_equal 'test', tag.fragment
+    assert_equal 'example.org,2014:uri-tag#test', tag.opaque
+  end
+
   def test_split
     skip
   end
 
   def test_extract
+    skip
+  end
+
+  def test_route_from
     skip
   end
 end

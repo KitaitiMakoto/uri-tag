@@ -22,6 +22,22 @@ module URI
       \\z
     ", Regexp::EXTENDED).freeze
 
+    def self.build(args)
+      tmp = Util.make_components_hash(self, args)
+
+      tmp[:opaque] = '' << tmp[:authority] << ',' << tmp[:date] << ':'
+
+      if tmp[:specific]
+        tmp[:opaque] << tmp[:specific]
+      end
+
+      if tmp[:fragment]
+        tmp[:opaque] << '#' << tmp[:fragment]
+      end
+
+      return super(tmp)
+    end
+
     attr_reader :authority, :date, :specific, :fragment
 
     def initialize(*arg)
