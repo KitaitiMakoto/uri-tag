@@ -11,7 +11,7 @@ module URI
     UNRESERVED_PATTERN = "#{PATTERN::ALNUM}\\-\\._~".freeze
     SUB_DELIMS_PATTERN = '!$&\'\(\)*+,;='.freeze
     PCHAR_PATTERN = "#{UNRESERVED_PATTERN}#{PATTERN::ESCAPED}#{SUB_DELIMS_PATTERN}:@".freeze
-    SPECIFIC_PATTERN = FRAGMENT_PATTERN = "(?:[#{PCHAR_PATTERN}/?]*)".freeze
+    SPECIFIC_PATTERN = FRAGMENT_PATTERN = "[#{PCHAR_PATTERN}/?]*".freeze
     TAG_REGEXP = Regexp.new("
       \\A
       (?<authority>#{AUTHORITY_PATTERN})
