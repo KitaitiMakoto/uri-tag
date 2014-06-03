@@ -44,6 +44,7 @@ class TestTag < Test::Unit::TestCase
     assert_equal 'uri-tag', tag.specific
     assert_equal 'test', tag.fragment
     assert_equal 'example.org,2014:uri-tag', tag.opaque
+    assert_equal 'tag:example.org,2014:uri-tag#test', tag.to_s
   end
 
   def test_compopnent
