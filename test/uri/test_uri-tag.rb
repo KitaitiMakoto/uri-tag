@@ -4,6 +4,10 @@ require 'uri/tag'
 module URI
 
 class TestTag < Test::Unit::TestCase
+  def setup
+    @uri = URI.parse('tag:example.com,2000:')
+  end
+
   def test_pattern
     assert_match /#{Tag::DNSNAME_PATTERN}/, 'sub-domain.example.net'
     assert_match /#{Tag::AUTHORITY_PATTERN}/, 'sub-domainexample.net'
@@ -22,6 +26,12 @@ class TestTag < Test::Unit::TestCase
     assert_equal 'specific?query', uri.specific
     assert_equal 'fragment', uri.fragment
     assert_equal 'example.net,2014:specific?query', uri.opaque
+
+    assert_nil uri.host
+    assert_nil uri.path
+    assert_nil uri.port
+    assert_nil uri.query
+    assert_nil uri.registry
   end
 
   def test_build
@@ -34,6 +44,23 @@ class TestTag < Test::Unit::TestCase
     assert_equal 'uri-tag', tag.specific
     assert_equal 'test', tag.fragment
     assert_equal 'example.org,2014:uri-tag', tag.opaque
+  end
+
+  def test_compopnent
+    assert_equal [:scheme, :authority, :date, :specific, :fragment], @uri.component
+  end
+
+  def test_port
+    assert_nil @uri.default_port
+    assert_raise InvalidURIError do
+      @uri.port = 80
+    end
+  end
+
+  def test_equal
+    assert(URI.parse('tag:example.com,2000:') == URI.parse('tag:example.com,2000:'))
+    assert(URI.parse('tag:example.com,2000:') != URI.parse('tag:EXAMPLE.COM,2000:'))
+    assert(URI.parse('tag:example.com,2000:') != URI.parse('tag:example.com,2000-01-01:'))
   end
 
   def test_split
