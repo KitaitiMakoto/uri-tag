@@ -33,7 +33,7 @@ class TestTag < Test::Unit::TestCase
     assert_equal '2014', tag.date
     assert_equal 'uri-tag', tag.specific
     assert_equal 'test', tag.fragment
-    assert_equal 'example.org,2014:uri-tag#test', tag.opaque
+    assert_equal 'example.org,2014:uri-tag', tag.opaque
   end
 
   def test_split

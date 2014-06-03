@@ -31,10 +31,6 @@ module URI
         tmp[:opaque] << tmp[:specific]
       end
 
-      if tmp[:fragment]
-        tmp[:opaque] << '#' << tmp[:fragment]
-      end
-
       return super(tmp)
     end
 
