@@ -43,6 +43,8 @@ module URI
         self.authority = $~['authority']
         self.date = $~['date']
         self.specific = $~['specific']
+      else
+        raise InvalidURIError, "bad URI(authority nor date not set?): #{self}" # TODO: specify invalid part
       end
     end
 
