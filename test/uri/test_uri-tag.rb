@@ -32,6 +32,16 @@ class TestTag < Test::Unit::TestCase
     assert_nil uri.port
     assert_nil uri.query
     assert_nil uri.registry
+
+    %w[
+      tag:
+      tag:example.net
+      tag:example.net,2014
+    ].each do |uri_str|
+      assert_raise InvalidURIError do
+        URI.parse uri_str
+      end
+    end
   end
 
   def test_build
