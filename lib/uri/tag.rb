@@ -53,22 +53,38 @@ module URI
     end
 
     def authority=(value)
+      check_authority(value)
       set_authority(value)
       value
     end
 
     def date=(value)
+      check_date(value)
       set_date(value)
       value
     end
 
     def specific=(value)
+      check_specific(value)
       set_specific(value)
       value
     end
 
-    def fragment=(value)
-      set_fragment(value)
+    def opaque=(value)
+      unless check_opaque(value)
+        raise InvalidComponentError, "bad component(expected opaque component: #{value})"
+      end
+
+      if TAG_REGEXP =~ value
+        self.authority = $~['authority']
+        self.date = $~['date']
+        self.specific = $~['specific']
+      else
+        raise InvalidURIError, "bad URI(authority nor date not set?): #{self}" # TODO: specify invalid part
+      end
+
+      set_opaque(value)
+      value
     end
 
     protected
@@ -83,6 +99,32 @@ module URI
 
     def set_specific(specific)
       @specific = specific
+    end
+
+    private
+
+    def check_authority(value)
+      if value !~ /\A(?:#{AUTHORITY_PATTERN})\z/o
+        raise InvalidComponentError, "bad component(expected authority component: #{value})"
+      end
+
+      return true
+    end
+
+    def check_date(value)
+      if value !~ /\A(?:#{DATE_PATTERN}\z)/o
+        raise InvalidComponentError, "bad component(expected date component: #{value})"
+      end
+
+      return true
+    end
+
+    def check_specific(value)
+      if value !~ /\A#{SPECIFIC_PATTERN}\z/o
+        raise InvalidComponentError, "bac component(expected specific component: #{value})"
+      end
+
+      return true
     end
   end
 

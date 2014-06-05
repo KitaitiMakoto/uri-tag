@@ -61,6 +61,54 @@ class TestTag < Test::Unit::TestCase
     assert_equal [:scheme, :authority, :date, :specific, :fragment], @uri.component
   end
 
+  def test_authority
+    [
+      '',
+      ' exapmle.net '
+    ].each do |authority|
+      assert_raise InvalidComponentError do
+        @uri.authority = authority
+      end
+    end
+  end
+
+  def test_date
+    %w[
+      20
+      2014/06/04
+      2014-06-04T00:00
+    ].each do |date|
+      assert_raise InvalidComponentError do
+        @uri.date = date
+      end
+    end
+  end
+
+  def test_specific
+    @uri.specific = 'sp%20+'
+    assert_equal 'sp%20+', @uri.specific
+    assert_raise InvalidComponentError do
+      @uri.specific = '#frag'
+    end
+  end
+
+  def test_opaque
+    @uri.fragment = 'frag'
+    @uri.opaque = 'example.org,2015:speci?fic'
+    assert_equal 'example.org,2015:speci?fic', @uri.opaque
+    assert_equal 'example.org', @uri.authority
+    assert_equal '2015', @uri.date
+    assert_equal 'speci?fic', @uri.specific
+    assert_equal 'frag', @uri.fragment
+    skip # assertion for raising error
+  end
+
+  def test_fragment
+    assert_raise InvalidComponentError do
+      @uri.fragment = 'sp ce'
+    end
+  end
+
   def test_port
     assert_nil @uri.default_port
     assert_raise InvalidURIError do
