@@ -30,6 +30,10 @@ And then execute:
     another_tag = URI::Tag.build(['example.org', '2014-06-06', 'KitaitiMakoto:', 'ruby'])
     another_tag == tag_uri # => true
 
+## License
+
+The same to Ruby's. See the file COPYING.
+
 ## Contributing
 
 1. Clone it ( https://gitorious.org/uri-ext/uri-tag/clone )
