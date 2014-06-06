@@ -33,6 +33,11 @@ Usage
     another_tag = URI::Tag.build(['example.org', '2014-06-06', 'KitaitiMakoto:', 'ruby'])
     another_tag == tag_uri # => true
 
+See also
+--------
+
+* [tag-uri][] - Tag scheme implementation based on [Addressable][addressable]
+
 License
 -------
 
@@ -48,3 +53,5 @@ Contributing
 5. Create a new Merge Request
 
 [rfc4151]: http://www.ietf.org/rfc/rfc4151.txt
+[tag-uri]: https://github.com/yb66/tag-uri
+[addressable]: https://github.com/sporkmonger/addressable
