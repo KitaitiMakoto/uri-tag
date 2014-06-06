@@ -1,6 +1,6 @@
 # URI::Tag
 
-This library extends standard bundled URI library to parse and build tag scheme URI defined in [rfc 4151][rfc4151].
+This library extends standard bundled URI library to parse and build tag scheme URI defined in [RFC 4151][rfc4151].
 
 ## Installation
 
