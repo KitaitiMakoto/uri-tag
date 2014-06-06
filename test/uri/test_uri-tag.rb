@@ -129,10 +129,6 @@ class TestTag < Test::Unit::TestCase
     assert(URI.parse('tag:example.com,2000:') != URI.parse('tag:example.com,2000-01-01:'))
   end
 
-  def test_extract
-    skip
-  end
-
   def test_route_from
     skip
   end
