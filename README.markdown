@@ -36,6 +36,7 @@ Usage
 See also
 --------
 
+* [RFC 4151][rfc4151] The 'tag' URI Scheme
 * [tag-uri][] - Tag scheme implementation based on [Addressable][addressable]
 
 License
