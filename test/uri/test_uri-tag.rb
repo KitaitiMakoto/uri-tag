@@ -100,7 +100,14 @@ class TestTag < Test::Unit::TestCase
     assert_equal '2015', @uri.date
     assert_equal 'speci?fic', @uri.specific
     assert_equal 'frag', @uri.fragment
-    skip # assertion for raising error
+    [
+      nil,
+      ''
+    ].each do |str|
+      assert_raise InvalidURIError do
+        @uri.opaque = nil
+      end
+    end
   end
 
   def test_fragment

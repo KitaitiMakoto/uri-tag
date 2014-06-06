@@ -39,13 +39,7 @@ module URI
     def initialize(*arg)
       super(*arg)
 
-      if TAG_REGEXP =~ @opaque
-        self.authority = $~['authority']
-        self.date = $~['date']
-        self.specific = $~['specific']
-      else
-        raise InvalidURIError, "bad URI(authority nor date not set?): #{self}" # TODO: specify invalid part
-      end
+      self.opaque = @opaque
     end
 
     def tagging_entity
@@ -71,16 +65,14 @@ module URI
     end
 
     def opaque=(value)
-      unless check_opaque(value)
-        raise InvalidComponentError, "bad component(expected opaque component: #{value})"
-      end
+      check_opaque(value)
 
       if TAG_REGEXP =~ value
         self.authority = $~['authority']
         self.date = $~['date']
         self.specific = $~['specific']
       else
-        raise InvalidURIError, "bad URI(authority nor date not set?): #{self}" # TODO: specify invalid part
+        raise InvalidURIError, "bad URI(authority nor date not set?): #{self}" # raise InvalidURIError rather than InvalidComponentError, just because URI::Generic#check_opaque does so
       end
 
       set_opaque(value)
