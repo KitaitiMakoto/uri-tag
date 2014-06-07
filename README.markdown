@@ -32,6 +32,9 @@ Usage
     
     another_tag = URI::Tag.build(['example.org', '2014-06-06', 'KitaitiMakoto:', 'ruby'])
     another_tag == tag_uri # => true
+    
+    tag_uri.date_to_time # => 2014-06-06 00:00:00 UTC
+    tag_uri.date_to_time.class # => Time
 
 See also
 --------
