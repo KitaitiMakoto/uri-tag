@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "uri-tag"
-  spec.version       = '0.0.1'
+  spec.version       = '0.0.2'
   spec.authors       = ["KITAITI Makoto"]
   spec.email         = ["KitaitiMakoto@gmail.com"]
   spec.summary       = %q{This library extends standard bundled URI library to parse and build tag scheme URI defined in RFC 4151.}
