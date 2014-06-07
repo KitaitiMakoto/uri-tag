@@ -24,12 +24,7 @@ module URI
 
     def self.build(args)
       tmp = Util.make_components_hash(self, args)
-
-      tmp[:opaque] = '' << tmp[:authority] << ',' << tmp[:date] << ':'
-
-      if tmp[:specific]
-        tmp[:opaque] << tmp[:specific]
-      end
+      tmp[:opaque] = "%{authority},%{date}:%{specific}" % tmp
 
       return super(tmp)
     end
