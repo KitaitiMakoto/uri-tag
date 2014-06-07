@@ -113,7 +113,7 @@ module URI
 
     def check_specific(value)
       if value !~ /\A#{SPECIFIC_PATTERN}\z/o
-        raise InvalidComponentError, "bac component(expected specific component: #{value})"
+        raise InvalidComponentError, "bad component(expected specific component: #{value})"
       end
 
       return true
