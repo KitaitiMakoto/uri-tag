@@ -74,6 +74,10 @@ module URI
       value
     end
 
+    def date_to_time
+      Time.utc(*date.split('-'))
+    end
+
     protected
 
     def set_authority(authority)

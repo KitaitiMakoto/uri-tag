@@ -128,6 +128,12 @@ class TestTag < Test::Unit::TestCase
     assert(URI.parse('tag:example.com,2000:') != URI.parse('tag:EXAMPLE.COM,2000:'))
     assert(URI.parse('tag:example.com,2000:') != URI.parse('tag:example.com,2000-01-01:'))
   end
+
+  def test_date_to_time
+    assert_instance_of Time, @uri.date_to_time
+    assert @uri.date_to_time.utc?
+    assert_equal Time.new(2000, 1, 1, 0, 0, 0, '+00:00'), @uri.date_to_time
+  end
 end
 
 end
