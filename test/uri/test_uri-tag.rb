@@ -90,6 +90,7 @@ class TestTag < Test::Unit::TestCase
     assert_raise InvalidComponentError do
       @uri.specific = '#frag'
     end
+    assert_equal '', URI.parse('tag:example.net,2000:').specific
   end
 
   def test_opaque
