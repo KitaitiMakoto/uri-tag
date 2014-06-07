@@ -74,6 +74,19 @@ module URI
       value
     end
 
+    #
+    # == Description
+    #
+    # Returns Time object which represents date part
+    #
+    # Example:
+    #
+    #   require 'uri/tag'
+    #
+    #   uri = URI.parse('tag:example.org,2000:')
+    #   uri.date_to_time # => 2000-01-01 00:00:00 UTC
+    #   uri.date_to_time.class # => Time
+    #
     def date_to_time
       Time.utc(*date.split('-'))
     end
