@@ -133,7 +133,10 @@ class TestTag < Test::Unit::TestCase
   def test_date_to_time
     assert_instance_of Time, @uri.date_to_time
     assert @uri.date_to_time.utc?
-    assert_equal Time.new(2000, 1, 1, 0, 0, 0, '+00:00'), @uri.date_to_time
+    %w[2000 2000-01 2000-01-01].each do |date|
+      @uri.date = date
+      assert_equal Time.new(2000, 1, 1, 0, 0, 0, '+00:00'), @uri.date_to_time
+    end
   end
 end
 
