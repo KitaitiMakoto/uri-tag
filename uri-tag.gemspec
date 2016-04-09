@@ -4,7 +4,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["KITAITI Makoto"]
   spec.email         = ["KitaitiMakoto@gmail.com"]
   spec.summary       = %q{This library extends standard bundled URI library to parse and build tag scheme URI defined in RFC 4151.}
-  spec.homepage      = "https://gitorious.org/uri-ext"
+  spec.homepage      = "https://https://github.com/KitaitiMakoto/uri-tag"
   spec.license       = "Ruby"
 
   spec.test_files    = ['test/uri/test_tag.rb']
