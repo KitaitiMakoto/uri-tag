@@ -111,12 +111,6 @@ class TestTag < Test::Unit::TestCase
     end
   end
 
-  def test_fragment
-    assert_raise InvalidComponentError do
-      @uri.fragment = 'sp ce'
-    end
-  end
-
   def test_port
     assert_nil @uri.default_port
     assert_raise InvalidURIError do
