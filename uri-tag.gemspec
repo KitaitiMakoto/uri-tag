@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
                spec.extra_rdoc_files +
                %w[uri-tag.gemspec Rakefile]
 
-  spec.add_development_dependency "bundler", "~> 1.6"
+  spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rubygems-tasks"
 end
