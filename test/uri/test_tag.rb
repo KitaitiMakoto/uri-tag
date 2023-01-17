@@ -112,9 +112,8 @@ class TestTag < Test::Unit::TestCase
   end
 
   def test_fragment
-    assert_raise InvalidComponentError do
-      @uri.fragment = 'sp ce'
-    end
+    @uri.fragment = 'sp ce'
+    assert_equal 'sp%20ce', @uri.fragment
   end
 
   def test_port
