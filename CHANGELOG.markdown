@@ -1,6 +1,11 @@
 URI::Tag CHANGE LOG
 ===================
 
+0.0.3
+-----
+
+* Follow URI's API change
+
 0.0.2
 -----
 
