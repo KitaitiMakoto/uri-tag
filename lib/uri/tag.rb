@@ -132,5 +132,9 @@ module URI
     end
   end
 
-  @@schemes['TAG'] = Tag
+  if respond_to? :register_scheme
+    register_scheme "TAG", Tag
+  else
+    @@schemes['TAG'] = Tag
+  end
 end
